@@ -39,4 +39,13 @@ public class Date {
         return String.format("%02d.%02d.%02d", day, month, year);
 //        return day + "." + month + "." + year;
     }
+
+    @Override
+    public String toString() {
+        return "Date{" +
+                "day=" + day +
+                ", month=" + month +
+                ", year=" + year +
+                '}';
+    }
 }
