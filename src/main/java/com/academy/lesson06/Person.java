@@ -1,18 +1,25 @@
 package com.academy.lesson06;
 
-import java.util.Comparator;
-
 public class Person implements Comparable<Person> {
     protected long id;
-    protected String name;
+    protected String firstName;
+    protected String lastName;
     protected Gender gender;
+    protected int age;
 
     public Person() {
     }
 
-    public Person(long id, String name, Gender gender) {
+    public Person(String firstName, String lastName, Gender gender, int age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.age = age;
+    }
+
+    public Person(long id, String firstName, Gender gender) {
         this.id = id;
-        this.name = name;
+        this.firstName = firstName;
         this.gender = gender;
     }
 
@@ -32,12 +39,28 @@ public class Person implements Comparable<Person> {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public Gender getGender() {
@@ -53,7 +76,7 @@ public class Person implements Comparable<Person> {
     public String toString() {
         return "Person{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + firstName + '\'' +
                 ", gender=" + gender +
                 '}';
     }

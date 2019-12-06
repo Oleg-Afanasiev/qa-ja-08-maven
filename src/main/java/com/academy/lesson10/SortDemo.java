@@ -2,7 +2,6 @@ package com.academy.lesson10;
 
 import com.academy.lesson06.Gender;
 import com.academy.lesson06.Person;
-import com.academy.lesson10.sort.ComparatorPersonImpl;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -40,17 +39,17 @@ public class SortDemo {
 
         // по алфавиту
         System.out.println("по алфавиту");
-        persons.sort((p1, p2)-> p1.getName().compareTo(p2.getName()));
+        persons.sort((p1, p2)-> p1.getFirstName().compareTo(p2.getFirstName()));
         System.out.println(persons);
 
         // по алфавиту
         System.out.println("по алфавиту в обратно порядке");
-        persons.sort((p1, p2)-> p2.getName().compareTo(p1.getName()));
+        persons.sort((p1, p2)-> p2.getFirstName().compareTo(p1.getFirstName()));
         System.out.println(persons);
 
         // по алфавиту
         System.out.println("снова по алфавиту");
-        persons.sort(Comparator.comparing(Person::getName));
+        persons.sort(Comparator.comparing(Person::getFirstName));
         System.out.println(persons);
 
         // по id
@@ -62,7 +61,7 @@ public class SortDemo {
         Comparator<Person> sortByGenderThenByName =
                 (p1, p2)-> {
                     if (p1.getGender() == p2.getGender())
-                        return p1.getName().compareTo(p2.getName());
+                        return p1.getFirstName().compareTo(p2.getFirstName());
 
                     if (p1.getGender().equals(Gender.FEMALE))
                         return -1;
