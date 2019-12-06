@@ -15,10 +15,15 @@ import java.util.stream.Collectors;
 
 public class GenerateToDB {
     private final static int COUNT = 100;
+    private final static String SQL_INSERT = "insert into abonent(first_name, last_name, gender, age) values (?, ?, ?, ?)";
+
+    // configs
+    private static String dbUrl = "jdbc:mysql://localhost:3306/subscriber?user=root&password=root&serverTimezone=UTC";
     private static String pathMaleNames = "d:/teaching/telesens-academy/QA-JA-08/Tasks/Lesson 10/мужские имена.txt";
     private static String pathFemaleNames = "d:/teaching/telesens-academy/QA-JA-08/Tasks/Lesson 10/женские имена.txt";
     private static String pathMaleLastNames = "d:/teaching/telesens-academy/QA-JA-08/Tasks/Lesson 10/мужские фамилии.txt";
     private static String pathFemaleLastNames = "d:/teaching/telesens-academy/QA-JA-08/Tasks/Lesson 10/женские фамилии.txt";
+
     private static Random random = new Random();
 
     private static List<String> maleFirstNames;
@@ -29,9 +34,8 @@ public class GenerateToDB {
     public static void main(String[] args) throws Exception {
         fillLists();
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/subscriber?user=root&password=root&serverTimezone=UTC");
-        PreparedStatement ps = connection.prepareStatement("insert into abonent(first_name, last_name, gender, age) values (?, ?, ?, ?)");
+        Connection connection = DriverManager.getConnection(dbUrl);
+        PreparedStatement ps = connection.prepareStatement(SQL_INSERT);
         for (int i = 1; i <= COUNT; i++) {
             Person person = nextPerson();
             ps.setString(1, person.getFirstName());
