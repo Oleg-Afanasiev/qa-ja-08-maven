@@ -2,6 +2,7 @@ package com.academy.automationpractice;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -18,18 +19,21 @@ public class LoginTests {
     @BeforeClass(alwaysRun = true)
     public void setUp() throws IOException {
         Properties properties = new Properties();
-        // из директории <root>/src/main/java/resources
+        // вычитываем файл *.properties из директории <root>/src/main/java/resources
         properties.load(this.getClass().getClassLoader().getResourceAsStream("common.properties"));
+        // Инициализируем драйвер Chrome
         System.setProperty("webdriver.chrome.driver", properties.getProperty("chrome.driver"));
         driver = new ChromeDriver();
         baseUrl = properties.getProperty("baseUrl");
+        // Неявное ожидание (Implicit Waits)
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @Test
     public void testIncorrectLogin() {
         driver.get(baseUrl);
-        driver.findElement(By.linkText("Sign in")).click();
+        WebElement signInButton = driver.findElement(By.linkText("Sign in"));
+        signInButton.click();
         driver.findElement(By.id("email")).click();
         driver.findElement(By.id("email")).clear();
         driver.findElement(By.id("email")).sendKeys("qwerty");
@@ -41,6 +45,7 @@ public class LoginTests {
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {
+        // Закрываем браузер (все окна)
         driver.quit();
     }
 }
