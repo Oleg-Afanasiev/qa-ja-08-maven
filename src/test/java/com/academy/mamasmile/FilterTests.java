@@ -1,10 +1,9 @@
-package com.academy.automationpractice.mamasmile;
+package com.academy.mamasmile;
 
 import com.academy.core.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.annotations.Test;
 
 public class FilterTests extends BaseTest {
