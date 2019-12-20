@@ -6,6 +6,13 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class LoginTests extends BaseTest {
 
     @Test(dataProvider = "incorrectAuthDataProvider")
@@ -23,10 +30,29 @@ public class LoginTests extends BaseTest {
     }
 
     @DataProvider(name = "incorrectAuthDataProvider")
-    public Object[] incorrectAuthDataProvider() {
-        return new Object[][] {
-                {"qwerty", "1234", "Invalid email"},
-                {"", "", ""}
-        };
+    public Object[][] incorrectAuthDataProvider() throws IOException {
+        String file = properties.getProperty("data.dir") + "/incorr_auth_test_data.csv";
+        FileReader fr = new FileReader(file);
+        BufferedReader br = new BufferedReader(fr);
+        List<String> data = new ArrayList<>();
+        String line;
+        while ((line = br.readLine()) != null) {
+            if (!line.trim().startsWith("#"))
+                data.add(line);
+        }
+        br.close();
+        fr.close();
+
+        // TODO LOG
+        System.out.println("****List");
+        System.out.println(data);
+
+        Object[][] result = new Object[data.size()][3];
+        for (int i = 0; i < data.size(); i++) {
+            result[i] = data.get(i).split(",");
+        }
+        System.out.println("****Array");
+        System.out.println(Arrays.deepToString(result));
+        return result;
     }
 }

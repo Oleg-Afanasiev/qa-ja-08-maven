@@ -16,11 +16,12 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
     protected WebDriver driver;
     protected String baseUrl;
+    protected Properties properties;
 
     @Parameters("browser")
     @BeforeClass(alwaysRun = true)
     public void setUp(@Optional("chrome") String browser) throws IOException {
-        Properties properties = new Properties();
+        properties = new Properties();
         // вычитываем файл *.properties из директории <root>/src/main/java/resources
         properties.load(this.getClass().getClassLoader().getResourceAsStream("common.properties"));
         baseUrl = properties.getProperty("baseUrl");
@@ -43,6 +44,7 @@ public class BaseTest {
 
         // Неявное ожидание (Implicit Waits)
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
     }
 
     @AfterClass

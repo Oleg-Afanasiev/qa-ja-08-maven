@@ -4,12 +4,14 @@ import com.academy.core.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 public class FilterTests extends BaseTest {
     private String baseUrl = "http://rozetka.com.ua";
 
     @Test
+    @Ignore
     public void testSlider() {
         driver.get(baseUrl);
         WebElement menuItem = driver.findElement(By.cssSelector("body > app-root > div > div:nth-child(2) > app-rz-main-page > div > aside > main-page-sidebar > sidebar-fat-menu > div > ul > li:nth-child(1) > a"));
