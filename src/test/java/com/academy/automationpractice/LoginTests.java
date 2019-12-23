@@ -2,6 +2,7 @@ package com.academy.automationpractice;
 
 import com.academy.automationpractice.page.HomePage;
 import com.academy.automationpractice.page.LoginPage;
+import com.academy.core.AssertWithLogging;
 import com.academy.core.BaseTest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,7 +22,7 @@ public class LoginTests extends BaseTest {
 
     @Test(dataProvider = "incorrectAuthDataProvider")
     public void testIncorrectLogin(String login, String password, String expectedErrMsg) {
-        LOG.info("start testIncorrectLogin");
+//        LOG.info("start testIncorrectLogin");
 //        driver.get(baseUrl);
 //        WebElement signInButton = driver.findElement(By.linkText("Sign in"));
 //        signInButton.click();
@@ -47,17 +48,17 @@ public class LoginTests extends BaseTest {
         // 2 способ - длинный
         LoginPage loginPage = new HomePage(driver, baseUrl)
                 .goToHome()
-                .then()
+//                .then()
                 .clickSignIn()
                 .fillEmail(login)
-                .and()
+//                .and()
                 .fillPassword(password)
                 .clickSubmit();
 
         String actualErrMsg = loginPage.getErrMsg();
-        Assert.assertEquals(actualErrMsg, expectedErrMsg);
+        AssertWithLogging.assertEquals(actualErrMsg, expectedErrMsg + "1");
 
-        LOG.info("finished testIncorrectLogin");
+//        LOG.info("finished testIncorrectLogin");
     }
 
     @DataProvider(name = "incorrectAuthDataProvider")
