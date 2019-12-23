@@ -56,7 +56,7 @@ public class LoginTests extends BaseTest {
                 .clickSubmit();
 
         String actualErrMsg = loginPage.getErrMsg();
-        AssertWithLogging.assertEquals(actualErrMsg, expectedErrMsg + "1");
+        AssertWithLogging.assertEquals(actualErrMsg, expectedErrMsg);
 
 //        LOG.info("finished testIncorrectLogin");
     }
