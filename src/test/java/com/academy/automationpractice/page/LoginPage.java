@@ -16,7 +16,7 @@ public class LoginPage extends BasePage {
     @FindBy(id = "SubmitLogin")
     private WebElement signInButton;
 
-    @FindBy(css="#center_column1 > div.alert.alert-danger > ol > li")
+    @FindBy(css="#center_column > div.alert.alert-danger > ol > li")
     private WebElement errMsgElement;
 
     public LoginPage(WebDriver driver) {
