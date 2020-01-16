@@ -1,12 +1,12 @@
 package com.academy.rest;
 
-import io.restassured.RestAssured;
 import io.restassured.config.LogConfig;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.io.IoBuilder;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -24,14 +24,15 @@ public class RestApiTests {
         baseURI = "http://localhost/rest/json";
         port = 8081;
 
-//        config = config()
-//                .logConfig(new LogConfig()
-//                        .defaultStream(IoBuilder.forLogger(LOG).buildPrintStream()));
+        config = config()
+                .logConfig(new LogConfig()
+                        .defaultStream(IoBuilder.forLogger(LOG).buildPrintStream()));
     }
 
     @Test
     public void testGetSubscriber() {
         Response response = given()
+                .log().all()
                 .get("/subscribers/1");
 
         assertThat(response.getStatusCode(), equalTo(200));
@@ -83,6 +84,9 @@ public class RestApiTests {
         json.put("age", 68);
         json.put("gender", "f");
 
+        System.out.println("*****");
+        System.out.println(json.toJSONString());
+
         RequestSpecification spec = given();
         spec.header("Content-Type", "application/json");
         spec.body(json.toJSONString());
@@ -103,6 +107,7 @@ public class RestApiTests {
         json.put("gender", "f");
 
         given()
+                .log().all()
                 .header("Content-Type", "application/json")
                 .body(json.toJSONString())
                 .post("/subscribers")
