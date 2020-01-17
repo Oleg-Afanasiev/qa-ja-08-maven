@@ -9,12 +9,17 @@ import java.util.List;
 import static com.codeborne.selenide.Selenide.page;
 
 public class SubscribersPage {
+    private MenuPage menuPage;
 
     @FindBy(id="add")
     private SelenideElement addBtn;
 
     @FindBy(xpath = "//td[4]")
     private ElementsCollection lastNames;
+
+    public SubscribersPage() {
+        page(MenuPage.class);
+    }
 
     public CreationFormPage clickAdd() {
         addBtn.click();

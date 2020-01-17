@@ -7,12 +7,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends BasePage {
+    private HeaderPage headerPage;
 
     @FindBy(linkText = "Sign in")
     private WebElement signInButton;
 
     public HomePage(WebDriver driver, String baseUrl) {
         super(driver, baseUrl);
+        headerPage = new HeaderPage(driver);
     }
 
     public HomePage goToHome() {
