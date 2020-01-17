@@ -36,7 +36,7 @@ public class MixedTests extends BaseTest {
         driver.findElement(By.name("submit_search")).click();
 
         driver.findElement(By.cssSelector("#list > a")).click();
-        new WebDriverWait(driver, Duration.ofSeconds(5))
+        new WebDriverWait(driver, 5000)
                 .until(ExpectedConditions.attributeToBe(
                         By.id("list"), "class", "selected"
                 ));
