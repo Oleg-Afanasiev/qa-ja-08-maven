@@ -3,6 +3,8 @@ package com.academy.selenide;
 import com.academy.selenide.page.HomePage;
 import com.academy.selenide.page.SubscribersPage;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -24,6 +26,10 @@ public class MobileTests {
 //        Configuration.browser = "com.academy.selenide.configuration.GeckoDriverProvider";
         Configuration.browser = "firefox";
         Configuration.startMaximized = true;
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(true)
+                .savePageSource(false)
+        );
     }
 
     @Test
@@ -44,7 +50,7 @@ public class MobileTests {
         $(byId("lname")).sendKeys("LastName");
         $(byId("FEMALE")).click();
         $(byId("age")).clear();
-        $(byId("age")).sendKeys("18");
+        $(byId("age1")).sendKeys("18");
         $(byCssSelector(".btn.btn-success")).click();
 
         List<String> lastNamesAfter = $$(byXpath("//td[4]")).texts();
@@ -71,6 +77,7 @@ public class MobileTests {
 
         List<String> lastNames = subscribersPage.getLastNames();
         System.out.println(lastNames);
+//        Assert.fail();
     }
 
     @AfterClass

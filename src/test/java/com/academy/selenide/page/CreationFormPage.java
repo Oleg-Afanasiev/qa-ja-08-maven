@@ -1,6 +1,7 @@
 package com.academy.selenide.page;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Selenide.page;
@@ -22,11 +23,13 @@ public class CreationFormPage {
     @FindBy(css=".btn.btn-success")
     private SelenideElement submitBtn;
 
+    @Step("fill first name {0}")
     public CreationFormPage fillFirstName(String firstName) {
         firstNameEl.setValue(firstName);
         return page(CreationFormPage.class);
     }
 
+    @Step("fill last name {0}")
     public CreationFormPage fillLastName(String lastName) {
         lastNameEl.setValue(lastName);
         return page(CreationFormPage.class);

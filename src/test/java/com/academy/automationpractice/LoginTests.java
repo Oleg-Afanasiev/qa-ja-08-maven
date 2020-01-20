@@ -1,13 +1,15 @@
 package com.academy.automationpractice;
 
+import com.academy.automationpractice.allure.TestListener;
 import com.academy.automationpractice.page.HomePage;
 import com.academy.automationpractice.page.LoginPage;
 import com.academy.core.AssertWithLogging;
 import com.academy.core.BaseTest;
+import io.qameta.allure.Description;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.io.BufferedReader;
@@ -17,9 +19,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Listeners(TestListener.class)
 public class LoginTests extends BaseTest {
     private final static Logger LOG = LogManager.getLogger(LoginTests.class.getName());
 
+    @Description("Тестируем попытки неуспешной аутентификации")
     @Test(dataProvider = "incorrectAuthDataProvider")
     public void testIncorrectLogin(String login, String password, String expectedErrMsg) {
 //        LOG.info("start testIncorrectLogin");
