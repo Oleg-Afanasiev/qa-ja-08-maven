@@ -50,6 +50,6 @@ public class DemoTests extends BaseTest {
 
         Thread.sleep(5_000);
 
-        driver.quit();
+//        driver.quit();
     }
 }

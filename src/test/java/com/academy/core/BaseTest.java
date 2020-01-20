@@ -44,7 +44,7 @@ public class BaseTest {
         switch (browser) {
             case "chrome":
                 ChromeOptions options = new ChromeOptions();
-//                options.addArguments("user-data-dir=D:/temp/Library/Application Support/Google/Chrome/Default");
+//                options.addArguments("user-data-dir=D:/temp/Library/Application Support/Google/Chrome/Default4");
                 System.setProperty("webdriver.chrome.driver", properties.getProperty("chrome.driver"));
                 driver = new EventFiringWebDriver(new ChromeDriver(options));
                 break;
@@ -72,7 +72,7 @@ public class BaseTest {
 
     @AfterClass
     public void tearDown() {
-        driver.quit();
+//        driver.quit();
     }
 
     @BeforeMethod
