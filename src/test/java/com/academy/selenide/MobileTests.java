@@ -61,7 +61,7 @@ public class MobileTests {
         Collections.sort(lastNamesAfter);
 
         Assert.assertEquals(lastNamesBefore, lastNamesAfter);
-        sleep(3000);
+//        sleep(3000);
     }
 
     @Test

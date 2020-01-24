@@ -5,7 +5,7 @@
     <test name="automationpractice">
         <parameter name="browser" value="chrome" />
         <classes>
-            <class name="com.academy.automationpractice.LoginTests" />
+            <class name="com.academy.selenide.MobileTests" />
         </classes>
     </test>
 <!--    <test name="selenide">-->
