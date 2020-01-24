@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class DemoTests extends BaseTest {
 
     @Test
+    //
     public void testInNewTab() throws InterruptedException {
         driver.get("http://automationpractice.com/index.php");
 

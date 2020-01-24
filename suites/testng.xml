@@ -4,16 +4,16 @@
 <suite name="selenium">
     <test name="automationpractice">
         <parameter name="browser" value="chrome" />
-        <packages>
-            <package name="com.academy.automationpractice.*" />
-        </packages>
+        <classes>
+            <class name="com.academy.automationpractice.LoginTests" />
+        </classes>
     </test>
-    <test name="selenide">
-        <parameter name="browser" value="chrome" />
-        <packages>
-            <package name="com.academy.selenide.*" />
-        </packages>
-    </test>
+<!--    <test name="selenide">-->
+<!--        <parameter name="browser" value="chrome" />-->
+<!--        <packages>-->
+<!--            <package name="com.academy.selenide.*" />-->
+<!--        </packages>-->
+<!--    </test>-->
 <!--    <test name="login">-->
 <!--        <parameter name="browser" value="firefox" />-->
 <!--        <classes>-->
